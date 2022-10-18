@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>{{header}}</title>
+        <script type="module" src = "../../textLoader.js" async></script>
+        <style>
+            /*для того, чтобы не игнорировал пробелы в тексте*/
+            html{
+                
+            }
+
+            body{
+                padding: 0%;
+                margin: 0%;
+                max-width: 100%;
+                min-height: 100vh;
+            }
+
+            #common {
+                flex: 1 0 0;
+                display: flex;
+                flex-direction: row;
+                min-height: 100vh;
+            }
+
+            #central {
+                flex: 5 0 0;
+
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+            }
+
+            #left {
+                flex: 2 0 0;
+                min-width: 10vh;
+            }
+
+            #right {
+                flex: 2 0 0;
+                min-width: 10vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #textInfo{
+                flex: 0 0 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                top: 150px;
+                position: sticky;
+            }
+
+            #title {
+                flex: 5 0 0;
+                width: 100%;
+                font-size: 40px;
+
+                font-weight: bold;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            #text {
+
+                white-space: pre;
+                width: 100%;
+                min-height: 10vh;
+            }
+
+            #commonCommentsDiv{
+                flex: 2 0 0;
+                width: calc(100% - 2px);
+                border: 1px solid black;
+                
+                display: flex;
+                flex-direction: column;
+            }
+
+            #commentsDiv {
+                overflow: auto;
+                max-height: 80vh;
+            }
+
+            #divForSendComment{
+                flex: 0 0 5px;
+                display: flex;
+                flex-direction: row;
+                height: 22px;
+            }
+
+            .commentCommonDiv {
+                flex: 0 0 100px;
+            }
+
+            .authorCommentDiv {
+                padding-left: 10px;
+                font-weight: bold;
+                background: #F8E3AB;
+            }
+
+            .valueCommentDiv {
+                padding-left: 20px;
+                font-size: 18px;
+            }
+
+            .dateCommentDiv{
+                padding-left: 30px;
+                font-size: 12px;
+            }
+
+            #commentForSend {
+                flex: 3 0 auto;
+                resize: none;
+            }
+
+            #buttonForSend{
+                flex: 1 0 auto;
+            }
+
+            #likeDiv {
+                display: flex;
+                font-size: 30px;
+                user-select: none;
+            }
+
+            #countLikeDiv {
+                font-size: 30px;
+            }
+
+            #dislikeDiv {
+                display: flex;
+                font-size: 30px;
+                user-select: none;
+            }
+
+            #countDislikeDiv {
+                font-size: 30px;
+            }
+
+            #likeImg{
+                width: 60px;
+                height: 60px;
+            }
+
+            #dislikeImg{
+                width: 60px;
+                height: 60px;
+            }
+
+            #viewDiv {
+                font-size: 30px;
+                user-select: none;
+            }
+
+            #countViewDiv {
+                font-size: 30px;
+            }
+
+            #upArrow{
+                font-size: 30px;
+                
+                display: flex;
+                justify-content: center; 
+                align-items: center;
+                border: 2px solid black;
+
+                width: 7vh; 
+                height: 7vh;
+                border-radius: 50%;
+
+                user-select: none;
+            }
+
+            #homeDiv{
+                font-size: 30px;
+                display: flex;
+                justify-content: center; 
+                align-items: center;
+                border: 2px solid black;
+
+                width: 7vh; 
+                height: 7vh;
+                border-radius: 50%;
+
+                user-select: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <input id = "textIdPreload" type = "hidden" value = "{{text.textId}}">
+        
+        {{#each text.links}}
+            <input class = "linksPreload" type ="hidden" value="{{this}}">
+        {{/each}}
+        {{!-- <div>header</div> --}}
+        <div id='common'>
+            <div id='left'></div>
+            <div id='central'>
+
+                <div id = "title">{{text.header}}</div>
+
+                <div id = 'text'>{{text.value}}
+                </div>
+
+            </div>
+            <div id='right'>
+                <div id = 'textInfo'>
+                    <div id='viewDiv'>👁</div>
+                    <div id='countViewDiv'>0</div>
+                    <div id='likeDiv'>👍</div>
+                    <div id='countLikeDiv'>0</div>
+                    <div id='dislikeDiv'>👎</div>
+                    <div id='countDislikeDiv'>0</div>
+                    <div id='homeDiv'>&#127968;</div>
+                    <div id='upArrow'>☝</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+
+<html>
+    <head>
+        <script src="../profileLoader.js" async></script>
+    </head>
+    <body>
+        
+        <div id = 'loginDiv'>ss</div>
+        
+        <div id = 'powerDiv'>
+            <hr>
+                <ul>
+            {{#if isNotHidden}}<!--если массив картинок пустой, то не отображать ленту-->
+
+                    <li><a href="/text/create">Создать текст</a></li>
+                    <li><a href="/user">Список пользователей</a></li>
+                    {{!-- <li><a href="/user/create">Создать пользователя</a></li> --}}
+            {{/if}}
+                </ul>
+            <hr>
+        </div>
+        
+
+    </body>
+</html>

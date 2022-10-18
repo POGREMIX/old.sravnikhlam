@@ -1,0 +1,31 @@
+{
+    "postgres":{
+        "host": "0.0.0.0",
+        "port": 5432,
+        "user": "pogremix",
+        "password": "pogremix",
+        "database": "main"        
+    },
+    "postgres_prod":{
+        "host": "ec2-54-246-90-10.eu-west-1.compute.amazonaws.com",
+        "port": 5432,
+        "user": "nwxfwqnkchawoo",
+        "password": "03511d04abda2e7b6d99d052959141b1f2625fe8cc58df38c20e401873f0fd11",
+        "database": "d5e4jd3n04nlpm"
+    },
+    "mySql": {
+        "connectionLimit": 5,
+        "host": "localhost",
+        "user": "root",
+        "database": "girlSchema",
+        "password": "12345"
+    },
+    "prod": {
+        "host": "https://pogremix.herokuapp.com",
+        "mailer": "https://mailer24.herokuapp.com"
+    },
+    "dev": {
+        "host": "http://localhost:3000",
+        "mailer": "http://localhost:5000"
+    }
+}

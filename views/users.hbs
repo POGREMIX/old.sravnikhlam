@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список пользователей</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <!--TODO: добавить админку на создание пользователей
+        <a href="/users/create">Добавить пользователя</a>
+    -->
+    <h1>Список пользователей</h1>
+     <table>
+         <tr><th>Имя</th></tr>
+         <ul>
+         {{#each users}}
+            <tr><td><li>{{this.login}}</li></td></tr>
+         {{/each}}
+         </ul>
+     </table>
+</body>
+<html>

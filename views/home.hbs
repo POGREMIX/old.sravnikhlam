@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная страница</title>
+    <meta charset="utf-8" />
+    <script src="chatLoader.js" async></script>
+    <script type="module" src="userLoader.js" async></script>
+    <script src="registrationLoader.js" async></script>
+    <script type="module" src="homeLoader.js" async></script>
+    <style>
+
+        @font-face {
+            font-family: EchoRevival_Regular;
+            src: url(EchoRevival_Regular.ttf);
+        }
+
+        @font-face {
+            font-family: RobotoSlab-VariableFont_wght;
+            src: url(RobotoSlab-VariableFont_wght.ttf);
+        }
+
+        @font-face {
+            font-family: Marmelad_Regular;
+            src: url(Marmelad_Regular.ttf);
+        }
+
+        html {
+            height: 110%;
+        }
+
+        body {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            margin: 0%;
+            align-items: center;
+            background-image: url(back.png);	
+            background-attachment: fixed;
+        }
+
+        .headerDiv {
+            /*Центрирование по горизонтали и вертикали*/
+            font-family: EchoRevival_Regular;
+            flex: 1 0 80px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            position: relative;/*для userDiv*/
+            
+            width: 100%;
+ 
+            padding: 0px;
+            
+        }
+
+        #userDiv{
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 10%;
+            
+
+            margin: 20px 40px 20px 10px;
+
+
+            /*border: 1px solid black;*/
+            /*background-color:#FDD7D3;*/
+            
+            display: flex;
+            flex-direction: row;
+            
+        }
+
+        #profileImage{    
+            position: absolute;
+            width: 30%;
+            height: 100%;
+            z-index: 15;
+        }
+
+        #authorizationButton {
+            position: absolute;
+            height: 100%;
+            width: 70%;
+            right: 0%;
+            border: none;
+            background-color:burlywood;
+        }
+
+        #title{
+            flex: 0 0 40px;
+            display: flex;
+            align-items:center;
+            margin: 0;
+            font-size:250%;            
+        }
+
+        .searchCommonDiv{
+            position: absolute;
+            right: 12%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #searchInput{
+            flex: 1 0 50%;
+            border: none;
+        }
+
+        #searchFilter{
+            flex: 0 0 20%;
+            outline: none;
+        }
+
+        #searchHelp {
+            position: absolute;
+            left: 35%;
+            top: 110%;
+
+            z-index: 15;
+
+            background-color: orange;
+
+            border: 1px #FFFFFF solid;
+            border-radius: 3px;
+
+            font-family: Arial;
+            font-weight: normal;
+            text-align: left;
+            color: black;
+            margin: 0;
+
+            visibility: hidden;
+
+            cursor: pointer !important;
+        }
+
+        .commonDiv{
+            flex: 5 0 80%;
+            display: flex;
+            flex-direction: row;
+
+            width: 100%;
+
+            margin: 0%;
+            padding: 0%;
+            
+        }
+
+        #leftDiv, #centralDiv, #rightDiv{
+            margin: 0;
+            padding: 0;
+        }
+
+        #leftDiv{
+            flex: 1 0 0;
+            display: flex;
+            flex-direction: column;
+
+            position: relative;
+        }
+
+        #lentaDiv {
+
+        }
+
+        #rightDiv{
+            flex: 1 0 0;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            align-items: center;
+        }
+
+        .newsList {
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        .news {
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        #centralDiv {
+            flex: 3 0 0;
+            display: flex;
+            flex-direction: column;
+            align: center;
+        }
+
+        #popular {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: space-between;
+
+            background-color:#ffffff;
+
+            border-radius: 5px;
+        }
+
+        .textDiv {
+            flex: 0 0 200px;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 600px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .textBorder{
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: row;
+            margin: 20px 20px 20px 20px;
+        }
+        
+        .textImg{
+            flex: 1 0 auto;
+            height: 160px;
+            width: 200px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+
+        .textCommonDiv{
+            flex: 2 0 auto;
+            display: flex;
+            flex-direction: column;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 230px;
+
+        }
+        
+        .textHeader{
+            flex: 0 0 auto;
+
+            white-space: pre-wrap;
+            word-wrap:break-word;
+            font-family:RobotoSlab-VariableFont_wght
+            
+        }
+
+        .textInfo{
+            flex: 0 0 auto;
+       
+           font-family: Marmelad_Regular;
+            white-space: pre-wrap;
+            word-wrap:break-word;
+        }
+
+        #anotherPageList {
+            flex: 0 0 70px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pageNumber {
+            flex: 0 0 4vh;
+            font-weight: bold;
+            border: 1px solid black;
+            text-align: center;
+            user-select: none;/*запрет на выделение текста*/
+        }
+
+        #divForChat{
+            flex: 0 0 300px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+        }
+
+        #chatHeader{
+            flex: 0 0 1vh;
+            text-align: center;
+            font-weight: bolder;
+            background-color:burlywood;
+            user-select: none;/*запрет на выделение текста*/
+        }
+
+        #divForChat, #chatWindow, #chatInput, #chatButton{
+
+        }
+
+        #chatWindow {
+            flex: 4 0 10vh;
+            width: 100%;
+            background-color: white;
+            overflow: auto;
+        }
+
+        #chatCommonInputDiv{
+            display: flex;
+            flex-direction: row;
+        }
+
+        #chatInput {
+            flex: 3 0 1vh;
+            width: 70%;
+        }
+
+        #chatButton {
+            flex: 1 0 1vh;
+            width: 30%;
+        }
+
+
+        #userInput{
+            position: relative;
+        }
+
+        #footer {
+            flex: 1 0 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center; 
+            align-items: center;
+            text-align: center;
+
+            width: 100%;
+
+        }
+
+        #footerList{
+            flex: 0 0 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footerListElem{
+            flex: 0 0 1;
+            list-style-type: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+        <div class="headerDiv">
+            <div id="userDiv">  
+                <button id="authorizationButton">Войти</a>
+            </div>
+            <div id='title'>POGREMIX</div>
+
+ <!-- 
+            <div class="searchCommonDiv">
+                <input id="searchInput" oninput="giveAnswer(this)" placeholder="элемент выключен">
+                <select id="searchFilter" size="1" >
+                <option selected value="s1">По свежести</option>
+                {{!-- <option value="s2">По просмотрам</option>
+                <option value="s3">По лайкам</option> --}}
+                </select>
+            </div>
+-->
+            <div id="searchHelp" onclick="copy()"></div> 
+        </div>         
+
+        <div class="commonDiv">
+            <div id="leftDiv">
+                <div id="lentaDiv"></div>
+                <div class="newsListDiv">
+                    <ul class="newsList">
+                        {{#each populars}}
+                            <div><a class="news" href="/text/getById/{{this.id}}">&#149;{{this.date}} {{this.title}}</a></div>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+            <div id="centralDiv">
+                
+
+                <div id="popular">
+
+                    {{#each populars}}
+                        <div class="textDiv" id="{{this.id}}">
+                            <div class='textBorder'>
+                                <img class="textImg" src="{{this.url}}" value={{this.id}}>
+                                <div class="textCommonDiv">
+                                    <a class="textHeader" href="/text/getById/{{this.id}}">{{this.title}}</a>
+                                    <div class="textInfo">{{this.textInfo}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+
+                </div>
+                <div id='anotherPageList'>
+                    {{pageCount}}
+                </div>
+
+                <div class="content">
+                    
+                </div> 
+
+            </div>
+
+            <div id="rightDiv">
+                {{!-- <div id="divForChat" class="draggable">
+                    <div id="chatHeader">Публичный чат</div>
+                    <div id="chatWindow"></div>
+                    <div id="chatCommonInputDiv">
+                        <input id="chatInput" type="text">
+                        <input id="chatButton" type="button" value="Жмяк" onclick="addChatMessage()">
+                    </div>
+                </div> --}}
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <ul id="footerList">
+                <li class="footerListElem"><a href="/about">О сайте</a></li>
+                <li class="footerListElem">&copy; <a href="https://vk.com/pogremix">POGREMIX</a></li>
+            </ul>
+        </div>
+</body>
+</html>
